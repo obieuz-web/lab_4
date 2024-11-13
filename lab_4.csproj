@@ -65,6 +65,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Forms\AuthorForm.xaml.cs">
+      <DependentUpon>AuthorForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Authors.xaml.cs">
+      <DependentUpon>Authors.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Forms\AuthorForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -80,11 +90,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\Authors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202411071428532_init.cs" />
-    <Compile Include="Migrations\202411071428532_init.designer.cs">
-      <DependentUpon>202411071428532_init.cs</DependentUpon>
+    <Compile Include="Migrations\202411131631273_abba.cs" />
+    <Compile Include="Migrations\202411131631273_abba.Designer.cs">
+      <DependentUpon>202411131631273_abba.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -100,8 +114,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202411071428532_init.resx">
-      <DependentUpon>202411071428532_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202411131631273_abba.resx">
+      <DependentUpon>202411131631273_abba.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

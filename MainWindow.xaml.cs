@@ -1,4 +1,5 @@
 ﻿using lab_4.Classes;
+using lab_4.Windows;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -32,6 +33,12 @@ namespace lab_4
             public DbSet<Book> Books { get; set; }
             public DbSet<Author> Authors { get; set; }
             public DbSet<Publisher> Publishers { get; set; }
+        }
+
+        private void Authors_Navigation(object sender, RoutedEventArgs e)
+        {
+            Authors authors_window = new Authors();
+            authors_window.Show();
         }
     }
 }
