@@ -10,11 +10,15 @@ namespace lab_4.Classes
     {
         public string Name { get; set; }
         public int Id { get; set; }
-        public ICollection<Book> Books { get; set; } = new List<Book>();
         public Publisher() { }
         public Publisher(string _Name)
         {
             Name = _Name;
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

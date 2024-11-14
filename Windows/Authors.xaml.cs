@@ -22,7 +22,6 @@ namespace lab_4.Windows
     /// </summary>
     public partial class Authors : Window
     {
-        public Author SelectedItem { get; set; }
         private ObservableCollection<Author> authors { get; set; }
         private MyDbContext context { get; set; }
         public Authors()
@@ -30,6 +29,7 @@ namespace lab_4.Windows
             InitializeComponent();
 
             context = new MyDbContext();
+
             authors = new ObservableCollection<Author>(context.Authors.ToList());
 
             _dataGrid.ItemsSource = authors;
@@ -38,10 +38,12 @@ namespace lab_4.Windows
         private void Dodaj(object sender, RoutedEventArgs e)
         {
             AuthorForm authorForm = new AuthorForm();
-            authorForm.ShowDialog();
 
             authorForm.Closed += CreateAuthor;
 
+            authorForm.ShowDialog();
+
+            context.SaveChanges();
 
             MessageBox.Show("Dodano autora");
         }
@@ -52,12 +54,11 @@ namespace lab_4.Windows
             {
                 return;
             }
+            Author author = (Author)_dataGrid.SelectedItem;
 
-            context.Authors.Remove((Author)_dataGrid.SelectedItem);
+            DeleteAuthor(author);
 
-            //context.SaveChanges();
-
-            authors.Remove((Author)_dataGrid.SelectedItem);
+            context.SaveChanges();
 
             MessageBox.Show("Usunieto autora");
         }
@@ -69,16 +70,18 @@ namespace lab_4.Windows
             }
             Author author = (Author)_dataGrid.SelectedItem;
 
-            context.Authors.Remove(author);
-
-            //context.SaveChanges();
-            
-            authors.Remove((Author)_dataGrid.SelectedItem);
-
             AuthorForm authorForm = new AuthorForm(author);
-            authorForm.ShowDialog();
 
             authorForm.Closed += CreateAuthor;
+
+            authorForm.ShowDialog();
+
+            if (authorForm.closed)
+            {
+                return;
+            }
+
+            DeleteAuthor(author);
 
             MessageBox.Show("Zmodyfikowano autora");
 
@@ -94,7 +97,6 @@ namespace lab_4.Windows
         }
         private void CreateAuthor(object s, EventArgs ev)
         {
-            MessageBox.Show("uwu");
             AuthorForm authorForm = (AuthorForm) s;
             if (authorForm.closed)
             {
@@ -109,9 +111,30 @@ namespace lab_4.Windows
 
             authors.Add(author);
 
-            MessageBox.Show(author.FirstName);
-
             _dataGrid.Items.Refresh();
+        }
+        private void DeleteAuthor(Author author)
+        {
+            authors.Remove(author);
+
+            var booksToRemove = context.Books.Where(b => b.Author.Id == author.Id).ToList();
+            foreach (var book in booksToRemove)
+            {
+                context.Books.Remove(book);
+            }
+
+            context.Authors.Remove(author);
+
+            context.SaveChanges();
+        }
+
+        private void Search(object sender, RoutedEventArgs e)
+        {
+            string search = _textblock_search.Text.ToLower();
+
+            authors = new ObservableCollection<Author>(context.Authors.Where(a => a.LastName.ToLower().Contains(search)).ToList());
+
+            _dataGrid.ItemsSource = authors;
         }
     }
 }

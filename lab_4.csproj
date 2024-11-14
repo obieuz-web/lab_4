@@ -65,12 +65,40 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Forms\BookForm.xaml.cs">
+      <DependentUpon>BookForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PublisherForm.xaml.cs">
+      <DependentUpon>PublisherForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AuthorForm.xaml.cs">
       <DependentUpon>AuthorForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202411132316140_koniec.cs" />
+    <Compile Include="Migrations\202411132316140_koniec.Designer.cs">
+      <DependentUpon>202411132316140_koniec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202411140009148_mozeteraz.cs" />
+    <Compile Include="Migrations\202411140009148_mozeteraz.Designer.cs">
+      <DependentUpon>202411140009148_mozeteraz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Books.xaml.cs">
+      <DependentUpon>Books.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Publishers.xaml.cs">
+      <DependentUpon>Publishers.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Authors.xaml.cs">
       <DependentUpon>Authors.xaml</DependentUpon>
     </Compile>
+    <Page Include="Forms\BookForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\PublisherForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Forms\AuthorForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -90,6 +118,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\Books.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Publishers.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Windows\Authors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,6 +152,12 @@
     </Compile>
     <EmbeddedResource Include="Migrations\202411131631273_abba.resx">
       <DependentUpon>202411131631273_abba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411132316140_koniec.resx">
+      <DependentUpon>202411132316140_koniec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411140009148_mozeteraz.resx">
+      <DependentUpon>202411140009148_mozeteraz.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

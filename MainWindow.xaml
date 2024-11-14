@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab_4"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="400" Width="300">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -13,8 +13,8 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Button Width="100" Height="100" Content="Autorzy" Click="Authors_Navigation"/>
-        <Button Width="100" Height="100" Content="Wydawnictwa" Grid.Column="1"/>
-        <Button Width="100" Height="100" Content="Książki" Grid.Column="2"/>
+        <Button Width="80" Height="80" Content="Autorzy" Click="NavigateToAuthors"/>
+        <Button Width="80" Height="80" Content="Wydawnictwa" Grid.Column="1" Click="NavigateToPublishers"/>
+        <Button Width="80" Height="80" Content="Książki" Grid.Column="2" Click="NavigateToBooks"/>
     </Grid>
 </Window>
